@@ -4,7 +4,28 @@ module Msf
 module Ui
 module Console
 module CommandDispatcher
-class AutoPWN
+class Plugin::AutoPWN < Msf::Plugin
+	#
+	# The plugin description for Msf::Plugin
+	#
+	def desc
+		"DB AutoPWN"
+	end
+
+	#
+	# The dispatcher's name.
+	#
+	def name
+		"DB AutoPWN"
+	end
+
+	def initialize(framework, opts)
+		super
+
+		add_console_dispatcher(AutoPWN)
+	end
+
+	class AutoPWN
 
 		require 'tempfile'
 
@@ -522,7 +543,7 @@ class AutoPWN
 			print_line("")
 		# EOM
 		end
-
+	end
 end
 end
 end
